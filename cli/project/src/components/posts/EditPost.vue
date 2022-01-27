@@ -1,8 +1,18 @@
 <template>
   <div>
-    <h3>create post :</h3>
-    <hr />
-    <PostForm @formData="createPost" :btnLoading="loading" name="add post"></PostForm>
+    <div v-if="pageLoading" class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div v-else>
+      <h3>create post :</h3>
+      <hr />
+      <PostForm
+        @formData="updatePost"
+        :btnLoading="loading"
+        :post="post"
+        name="edit post"
+      ></PostForm>
+    </div>
     <!-- <form @submit.prevent="validate()" class="col-6 m-auto">
       <label for="">title</label>
       <input
@@ -20,30 +30,46 @@
           class="spinner-border spinner-border-sm"
           role="status"
         ></div>
-        save
+        edit post
       </button>
     </form> -->
   </div>
 </template>
 
 <script>
-// import { reactive, ref } from "vue";
+//import { reactive, ref } from "vue";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useRoute } from "vue-router";
+import { ref } from "@vue/reactivity";
 import PostForm from "./Form.vue";
-import { ref } from '@vue/reactivity';
 export default {
   components: {
     PostForm,
   },
   setup() {
     // let loading = ref(false);
+    const route = useRoute();
     // const form = reactive({
     //   title: "",
     //   body: "",
     //   bodyErrorText: "",
     //   titleErrorText: "",
     // });
+    let loading = ref(false);
+    let pageLoading = ref(true);
+    const post = ref({});
+    function getPost() {
+      axios
+        .get(`https://jsonplaceholder.typicode.com/posts/${route.params.id}`)
+        .then((res) => {
+          post.value = res.data;
+          pageLoading.value = false;
+          // form.title = res.data.title;
+          // form.body = res.data.body;
+        });
+    }
+    getPost();
     // function validate() {
     //   if (form.title === "") {
     //     form.titleErrorText = " title is required";
@@ -58,14 +84,13 @@ export default {
 
     //   if (form.title !== "" && form.body !== "") {
     //     loading.value = true;
-    //     createPost();
+    //     updatePost();
     //   }
     // }
-    const loading = ref(false)
-    function createPost(form) {
-      loading.value = true;
+    function updatePost(form) {
+       loading.value = true;
       axios
-        .post(`https://jsonplaceholder.typicode.com/posts`, {
+        .put(`https://jsonplaceholder.typicode.com/posts/${route.params.id}`, {
           title: form.title,
           body: form.body,
           userid: 1,
@@ -76,12 +101,11 @@ export default {
           Swal.fire({
             icon: "success",
             title: "Thanks",
-            text: "post was created",
+            text: "post was edited",
           });
         });
     }
-    return { loading,createPost };
-    // return { form, loading, validate };
+    return { loading, updatePost, post, pageLoading };
   },
 };
 </script>
