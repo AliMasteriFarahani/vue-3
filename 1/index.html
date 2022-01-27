@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <style>
+        .fade-enter-active,
+        .fade-leave-active{
+            transition: all .5s ease ;
+        }
+        .fade-enter-from,
+        .fade-leave-to{
+            opacity: 0;
+        }
+
+    </style>
+    <div id="app">
+
+    </div>
+    <script src="vue.global.js"></script>
+    <script src="app.js"></script>
+
+</body>
+<script>
+    const Home = {
+        template:`<h3>home component</h3>`,
+        data(){
+            return{
+                name :'ali'
+            }
+        }
+    }
+const app = Vue.createApp({
+    // components:{Home},
+    template:`<div>this is a main coponent</div>
+    <Home/>
+    `,
+    data() {
+        return {
+            active:false,
+            name:'',
+            show:true
+        };
+    }
+
+})
+
+app.component('Home',Home)
+app.mount("#app");
+</script>
+
+</html>
