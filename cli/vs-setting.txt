@@ -1,0 +1,64 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "One Dark Pro",
+    "editor.wordWrap": "on" ,
+    "editor.fontSize": 16,
+    //"editor.fontWeight": "500",
+    "[vue]": {
+        "editor.defaultFormatter": "octref.vetur"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.preferredDarkColorTheme": "One Dark Pro Darker",
+    "workbench.editor.enablePreview": false,
+    "oneDarkPro.bold": true,
+    "workbench.editor.wrapTabs": true,
+    "git.decorations.enabled": true,
+    "workbench.colorCustomizations": {
+            "tab.activeBorder": "#10c7f5",
+           // "tab.activeForeground":"#ffffff",
+           // "tab.activeBorderTop": "#0A84FF",
+            "tab.activeBackground": "#000000"
+
+        },
+        "javascript.updateImportsOnFileMove.enabled": "always",
+        "files.autoSave": "afterDelay",
+        "security.workspace.trust.untrustedFiles": "open",
+        "[html]": {
+            //"editor.defaultFormatter": "esbenp.prettier-vscode"
+            "editor.defaultFormatter": "vscode.html-language-features"
+        },
+        "[css]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "tabnine.experimentalAutoImports": true,
+        "prettier.printWidth": 200,
+        "prettier.tabWidth": 4,
+        "editor.mouseWheelZoom": true,
+        "editor.lineHeight": 24,
+        "editor.suggestLineHeight": 24,
+        "workbench.tree.indent": 15,
+        "editor.minimap.enabled": false,
+        "breadcrumbs.enabled": false,
+        "[php]": {
+            "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+        },
+        "liveSassCompile.settings.formats": [
+            
+            {
+                "format": "expanded",
+                "extensionName": ".css",
+                "savePath": "/css/"
+            }
+        ],
+        "[scss]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "editor.fontFamily": "hack,Consolas, 'Courier New', monospace",
+        "editor.inlayHints.fontFamily": "hack,Consolas, 'Courier New', monospace",
+        "[typescript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        
+}

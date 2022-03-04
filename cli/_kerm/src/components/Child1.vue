@@ -1,8 +1,5 @@
 !<template>
-  <div>
-      <h2>App :</h2>
-      <router-view></router-view>
-  </div>
+  <div>this is child 1</div>
 </template>
 
 <script>

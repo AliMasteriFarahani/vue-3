@@ -1,7 +1,7 @@
 import { ref } from "@vue/reactivity";
-
+import useCounter  from "@/composibles/useCounter";
 export const useCounter = (count) => {
-    const counter = ref(0);
+    // const counter = ref(0);
     function increament() {
         counter.value += count.value;
     }
